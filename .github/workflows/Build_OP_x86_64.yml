@@ -92,6 +92,13 @@ jobs:
         path: |
           openwrt/logs/
           openwrt/.config
+          
+    - name: Create and Push Tag
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git tag v${{ env.BUILD_DATE }}
+        git push origin v${{ env.BUILD_DATE }}
 
     - name: Get current date
       id: date
