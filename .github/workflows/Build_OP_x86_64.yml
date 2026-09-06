@@ -26,6 +26,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
+    - name: Get current date
+      id: date
+      run: echo "BUILD_DATE=$(date +%Y%m%d-%H%M)" >> $GITHUB_ENV
+
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
