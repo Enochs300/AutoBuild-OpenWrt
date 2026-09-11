@@ -114,7 +114,7 @@ jobs:
         git push origin v${{ env.BUILD_DATE }}
 
     - name: Upload firmware to Release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@master
       with:
         files: |
           openwrt/bin/targets/x86/64/*
@@ -123,13 +123,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: Send Telegram Notification
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          🎉 OpenWrt x86_64 固件编译成功！
-          仓库: ${{ github.repository }}
-          分支: ${{ github.ref_name }}
-          触发人: ${{ github.actor }}
+   
