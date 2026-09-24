@@ -62,8 +62,11 @@ jobs:
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
-        # 替换官方 luci 为你自己的 luci 仓库及对应分支
-        sed -i 's|src-git-full luci.*|src-git luci https://github.com/Enochs300/luci.git;openwrt-25.12|g' feeds.conf.default
+        # 替换官方 22版 luci 为你自己的 luci 仓库及对应分支
+        sed -i 's|src-git-full luci.*|src-git luci https://github.com/Enochs300/luci.git;openwrt-22.03|g' feeds.conf.default
+        
+        # 替换官方 25版 luci 为你自己的 luci 仓库及对应分支
+        sed -i 's|src-git luci.*|src-git luci https://github.com/Enochs300/luci.git;openwrt-25.12|g' feeds.conf.default
         
         ./scripts/feeds update -a
         ./scripts/feeds install -a
